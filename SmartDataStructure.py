@@ -173,7 +173,7 @@ class SD:
         log = math.log(s)
         arr = globalz.add_ctr + s * globalz.contains_ctr + s * globalz.remove_ctr + s * globalz.get_ctr
         sarr = log * globalz.contains_ctr + s * globalz.add_ctr + globalz.remove_ctr * s + globalz.get_ctr
-        bst = (log * globalz.contains_ctr + log * globalz.add_ctr + globalz.remove_ctr * log + globalz.get_ctr * log) * 10
+        bst = (log * globalz.contains_ctr + log * globalz.add_ctr + globalz.remove_ctr * log + globalz.get_ctr * log) * 20
         #htable = 3 * s + s * globalz.get_ctr
         minheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * (globalz.get_ctr - self.get_min_ctr)
         maxheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * (globalz.get_ctr - self.get_max_ctr)
