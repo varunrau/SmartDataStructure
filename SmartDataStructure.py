@@ -20,7 +20,7 @@ class SD:
     which data structure to use. The higher the weight the better this
     data structure.
     """
-    def __init__(self, isTesting, which = DS.HASHTABLE):
+    def __init__(self, isTesting, which = None):
         if which == DS.ARRAY:
             self.struct = Arr()
         elif which == DS.SORTED_ARRAY:
@@ -120,33 +120,24 @@ class SD:
             return
         else:
             new_data_structure = self.best_datastructure()
-            if new_data_structure is None:
-                print "is none"
-            if new_data_structure != self.which and not self.is_peak:
+            if new_data_structure != self.which and not self.is_peak and self.which:
                 self.use_new_datastructure(new_data_structure)
 
     def use_new_datastructure(self, new):
         self.isTesting = True
         if new == DS.ARRAY:
-            self.which = DS.ARRAY
             temp = Arr()
         elif new == DS.SORTED_ARRAY:
-            self.which = DS.SORTED_ARRAY
             temp = SArr()
         elif new == DS.MAX_HEAP:
-            self.which = DS.MAX_HEAP
             temp = MaxHeap()
         elif new == DS.MIN_HEAP:
-            self.which = DS.MIN_HEAP
             temp = MinHeap()
         elif new == DS.BINARY_SEARCH_TREE:
-            self.which = DS.BINARY_SEARCH_TREE
             temp = Balanced_BST()
         elif new == DS.HASHTABLE:
-            self.which = DS.HASHTABLE
             temp = Hashtable()
         else:
-            self.which = DS.ARRAY
             temp = Arr()
         for x in range(self.size()):
             if self.which == DS.MAX_HEAP:
@@ -156,6 +147,7 @@ class SD:
                 item = self.extract_min()
                 temp.add(item)
         self.struct = temp
+        self.which = new
         self.isTesting = False
         print "Switch DataStructures"
 
@@ -181,6 +173,7 @@ class SD:
                 counter += 1
             return counter
         return self.which
+
 
     def time_to_reeval(self):
         if self.num_ops >= TIME_TO_REEVAL:
