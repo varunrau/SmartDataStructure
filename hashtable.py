@@ -36,15 +36,17 @@ class Hashtable:
         return False
 
     def remove(self, key):
-        self.numKeys -= 1
-        key_hash = hash(key)
-        self.buckets[key_hash % self.numBuckets].remove(key)
+        #self.numKeys -= 1
+        #key_hash = hash(key)
+        #self.buckets[key_hash % self.numBuckets].remove(key)
+        return 0
 
     def get(self, index):
-        full_list = []
-        for bucket in self.buckets:
-            if bucket is not None:
-                for element in bucket:
-                    full_list.append(element)
-        full_list.sort()
-        return full_list[index]
+        #full_list = []
+        #for bucket in self.buckets:
+        #    if bucket is not None:
+        #        for element in bucket:
+        #            full_list.append(element)
+        #full_list.sort()
+        #return full_list[index]
+        return 0
