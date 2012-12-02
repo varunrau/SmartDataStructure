@@ -60,7 +60,7 @@ class SD:
         self.is_peak = peak
 
     def add(self, key):
-        self.struct.add(str(key))
+        self.struct.add(key)
         self.len += 1
         globalz.add_ctr += 1
         globalz.num_ops += 1
