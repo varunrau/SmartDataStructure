@@ -44,6 +44,7 @@ class Hashtable:
         full_list = []
         for bucket in self.buckets:
             if bucket is not None:
-                full_list.append(bucket)
+                for element in bucket:
+                    full_list.append(element)
         full_list.sort()
         return full_list[index]
