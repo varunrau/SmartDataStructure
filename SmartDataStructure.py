@@ -8,6 +8,7 @@ from sarr import *
 from bst import *
 from minheap import *
 from maxheap import *
+from hashtable import *
 
 TIME_TO_REEVAL = 100
 
@@ -29,6 +30,8 @@ class SD:
             self.struct = MinHeap()
         elif which == DS.BINARY_SEARCH_TREE:
             self.struct = Balanced_BST()
+        elif which == DS.HASHTABLE:
+            self.struct = Hashtable()
         else:
             self.struct = Arr()
 
@@ -127,6 +130,8 @@ class SD:
             temp = MinHeap()
         elif new == DS.BINARY_SEARCH_TREE:
             temp = Balanced_BST()
+        elif new == DS.HASHTABLE:
+            temp = Hashtable()
         else:
             temp = Arr()
         for x in range(self.size()):
