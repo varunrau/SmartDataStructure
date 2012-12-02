@@ -19,7 +19,7 @@ for i in range(len(dataStructures)): #loop through dataStructures
   for line in fileinput.input(testFile): #replace SD() with a d.s.
     line = line.replace("SD()", "SD(True, " + str(dataStructures[i]) + ")")
     file.write(line)
-  
+
   file.close()
 
   start_time = time.time()
@@ -27,10 +27,9 @@ for i in range(len(dataStructures)): #loop through dataStructures
   elapsedTime = time.time() - start_time
   dataStructureTimes.append(elapsedTime)
 
-for i in range(len(dataStructures)): 
+for i in range(len(dataStructures)):
   print ("Time using %s: %s" % (dataStructures[i], dataStructureTimes[i]))
 
 
-  
 
 
