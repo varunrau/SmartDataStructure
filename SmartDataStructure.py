@@ -10,8 +10,9 @@ from minheap import *
 from maxheap import *
 from hashtable import *
 import math
+import globalz
 
-TIME_TO_REEVAL = 100
+TIME_TO_REEVAL = 1
 
 class SD:
 
@@ -35,7 +36,6 @@ class SD:
             self.struct = Hashtable()
         else:
             self.struct = Arr()
-
         self.which = which
         self.contains_ctr = 0
         self.add_ctr = 0
@@ -97,10 +97,14 @@ class SD:
 
     def extract(self, index):
         toReturn = self.get(index)
-        self.remove(toReturn)
+        self.remove_new(toReturn)
         self.num_ops += 1
         self.time_to_reeval()
         return toReturn
+
+    def remove_new(self, key):
+        print self.struct
+        self.struct.remove(key)
 
     def extract_min(self):
         self.extract(0)
@@ -110,7 +114,7 @@ class SD:
 
     def extract_new(self, index):
         toReturn = self.get_new(index)
-        self.remove(toReturn)
+        self.remove_new(toReturn)
         return toReturn
 
     def get_new(self, index):
@@ -133,8 +137,8 @@ class SD:
             return
         else:
             new = self.best_datastructure()
-            if new != self.which:
-                self.use_new_datastructure(0)
+            #if new != self.which:
+            self.use_new_datastructure(0)
             #self.use_new_datastructure(5)
 
     def use_new_datastructure(self, new):
@@ -156,10 +160,10 @@ class SD:
         for x in range(self.size()):
             if self.which == DS.MAX_HEAP:
                 item = self.extract_max_new()
-                temp.add_new(item)
+                temp.add(item)
             else:
                 item = self.extract_min_new()
-                temp.add_new(item)
+                temp.add(item)
         self.which = new
         self.struct = temp
         self.isTesting = False
@@ -191,3 +195,6 @@ class SD:
         if self.num_ops >= TIME_TO_REEVAL:
             self.reeval()
 
+
+    def counters():
+        return [contains_ctr, add_ctr, remove_ctr, get_ctr]
