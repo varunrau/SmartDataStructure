@@ -134,7 +134,7 @@ class SD:
         else:
             new = self.best_datastructure()
             if new != self.which:
-                self.use_new_datastructure(5)
+                self.use_new_datastructure(0)
             #self.use_new_datastructure(5)
 
     def use_new_datastructure(self, new):
@@ -158,12 +158,11 @@ class SD:
                 item = self.extract_max_new()
                 temp.add_new(item)
             else:
-                item = self.extract_min()
-                temp.add(item)
+                item = self.extract_min_new()
+                temp.add_new(item)
         self.which = new
         self.struct = temp
         self.isTesting = False
-        print "done"
 
     def best_datastructure(self):
         s = self.size()
