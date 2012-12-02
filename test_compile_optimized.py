@@ -59,7 +59,7 @@ def removeTest():
     else:
         print "Remove PASSED"
 
-s_data = SD(True, 5)
+s_data = SD(True, 1)
 addTest()
 clear()
 containsTest()
