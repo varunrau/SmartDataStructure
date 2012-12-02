@@ -22,17 +22,13 @@ class Arr:
     """
     def add(self, key):
         self.array.append(key)
-        print self.array
 
     """
     Removes the item from the array.
     """
     def remove(self, key):
-        print "fda"
-        print key
-        print self.array
+        print "remove called"
         self.array.remove(key)
-        print self.array
 
     """
     Returns the item at index index
