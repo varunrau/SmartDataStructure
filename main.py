@@ -1,5 +1,10 @@
 # The main file
 
+import bisect
+
+from arr import *
+from sarr import *
+
 class SD:
 
     """
@@ -8,7 +13,7 @@ class SD:
     data structure.
     """
     def __init__(self):
-        self.struct = Arr()
+        self.struct = SArr()
 
     def contains(self, key):
         return self.struct.contains(key)
@@ -21,40 +26,4 @@ class SD:
 
     def get(self, index):
         return self.struct.get(index)
-
-
-class Arr:
-
-    """
-    Creates an array.
-    """
-    def __init__(self):
-        self.array = []
-
-    """
-    True iff the item is in the array.
-    """
-    def contains(self, key):
-        for x in self.array:
-            if x == key:
-                return True
-        return False
-
-    """
-    Adds the item to the array.
-    """
-    def add(self, key):
-        self.array.append(key)
-
-    """
-    Removes the item from the array.
-    """
-    def remove(self, key):
-        self.array.remove(key)
-
-    """
-    Returns the item at index index
-    """
-    def get(self, index):
-        return self.array.index(index)
 
