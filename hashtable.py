@@ -45,5 +45,5 @@ class Hashtable:
         for bucket in self.buckets:
             if bucket is not None:
                 full_list.append(bucket)
-
-        return full_list.sort()[index]
+        full_list.sort()
+        return full_list[index]
