@@ -43,11 +43,12 @@ class MinHeap:
     Returns the item at index index
     """
     def get(self, index):
-        stack = []
-        for x in range(index-1):
-            stack.append(heapq.heappop(self.array))
-        toReturn = heapq.heappop(self.array)
-        for x in stack:
-            self.add(x)
-        return toReturn
+        #stack = []
+        #for x in range(index-1):
+         #   stack.append(heapq.heappop(self.array))
+        #toReturn = heapq.heappop(self.array)
+        #for x in stack:
+         #   self.add(x)
+        #return toReturn
+        return 0
 
