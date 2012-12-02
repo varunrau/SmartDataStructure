@@ -8,7 +8,6 @@ from minheap import *
 from maxheap import *
 from bst import *
 
-
 def test():
     s_data.len = 0
 
