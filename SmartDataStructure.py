@@ -42,7 +42,6 @@ class SD:
         self.remove_ctr = 0
         self.get_ctr = 0
         self.get_min_ctr = 0
-        self.extract_ctr = 0
         self.extract_min_ctr = 0
         self.num_ops = 0
 
@@ -99,7 +98,6 @@ class SD:
     def extract(self, index):
         toReturn = self.get(index)
         self.remove(toReturn)
-        self.extract_ctr += 1
         self.num_ops += 1
         self.time_to_reeval()
         return toReturn
@@ -135,11 +133,9 @@ class SD:
             return
         else:
             new = self.best_datastructure()
-            if new is None:
-                return
-            if new != self.which and not self.is_peak and new is not None and self.which is not None:
-                if new != None:
-                    self.use_new_datastructure(new)
+            #if new != self.which and not self.is_peak and new is not None and self.which is not None:
+                #self.use_new_datastructure(new)
+            self.use_new_datastructure(5)
 
     def use_new_datastructure(self, new):
         self.isTesting = True
@@ -167,6 +163,7 @@ class SD:
                 temp.add(item)
         self.struct = temp
         self.isTesting = False
+        print "done"
 
     def best_datastructure(self):
         s = self.size()

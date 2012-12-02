@@ -60,10 +60,12 @@ def removeTest():
 
 s_data = SD(False, 0)
 s_data.setPeak(False)
+
 addTest()
-clear()
-containsTest()
-clear()
-removeTest()
-clear()
+#clear()
+#containsTest()
+#clear()
+#removeTest()
+#clear()
+
 

@@ -60,7 +60,10 @@ def removeTest():
         print "Remove PASSED"
 
 s_data = SD()
-addTest()
+s_data.add(1)
+s_data.add(3)
+print "done"
+#addTest()
 #clear()
 #containsTest()
 #clear()
