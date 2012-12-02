@@ -1,9 +1,11 @@
 # Test File
 
-s_data = new SD()
+from main import *
+
+s_data = SD()
 
 for x in range(10):
-    s_data.add(x)
+   s_data.add(x)
 
 print(str(s_data.contains(3)) + " should be true")
 

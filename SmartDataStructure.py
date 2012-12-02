@@ -37,14 +37,14 @@ class Arr:
     def contains(self, key):
         for x in self.array:
             if x == key:
-                return True
-        return False
+                return true
+        return false
 
     """
     Adds the item to the array.
     """
     def add(self, key):
-        self.array.append(key)
+        self.array.add(self.array.size(), key)
 
     """
     Removes the item from the array.
@@ -56,5 +56,5 @@ class Arr:
     Returns the item at index index
     """
     def get(self, index):
-        return self.array.index(index)
+        return self.array[index]
 
