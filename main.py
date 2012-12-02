@@ -14,16 +14,32 @@ class SD:
     """
     def __init__(self):
         self.struct = SArr()
+        self.len = 0
 
     def contains(self, key):
         return self.struct.contains(key)
 
     def add(self, key):
         self.struct.add(key)
+        self.len += 1
 
     def remove(self, key):
         self.struct.remove(key)
+        self.len -= 1
 
     def get(self, index):
         return self.struct.get(index)
 
+    def extract(self, index):
+        toReturn = get(self, index)
+        remove(self, index)
+        return toReturn
+
+    def extract_min(self):
+        extract(get(0))
+
+    def extract_max(self):
+        extract(get(self.len - 1))
+
+    def size(self):
+        return self.len
