@@ -29,16 +29,17 @@ class MinHeap:
     Removes the item from the array.
     """
     def remove(self, key):
-        stack = []
-        while (True):
-            val = heapq.heappop(self.array)
-            stack.append(val)
-            if val == key:
-                break
-        toReturn = stack.pop()
-        for x in stack:
-            self.add(x)
-        return toReturn
+        #stack = []
+        #while (True):
+         #   val = heapq.heappop(self.array)
+         #   stack.append(val)
+         #   if val == key:
+         #       break
+        #toReturn = stack.pop()
+        #for x in stack:
+        #    self.add(x)
+        #return toReturn
+        return 0
     """
     Returns the item at index index
     """
