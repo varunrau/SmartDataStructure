@@ -14,18 +14,18 @@ def clear():
 def addTest():
     s_data.len = 0
 
-    for x in range(10000):
+    for x in range(100):
         y = random.randint(0, 1000000)
         s_data.add(y)
 
-    if s_data.len != 10000:
+    if s_data.len != 100:
         print "Add FAILED"
     else:
         print "Add PASSED"
 
 def containsTest():
     test = []
-    for x in range(1000):
+    for x in range(100):
         y = random.randint(0, 1000000)
         s_data.add(y)
         test.append(y)
@@ -45,13 +45,13 @@ def containsTest():
 
 def removeTest():
     test = []
-    for x in range(1000):
+    for x in range(100):
         y = random.randint(0, 1000000)
         test.append(y)
         s_data.add(y)
 
 
-    for x in range(1000):
+    for x in range(100):
         s_data.remove(test[x])
 
     if s_data.len:
@@ -59,7 +59,7 @@ def removeTest():
     else:
         print "Remove PASSED"
 
-s_data = SD(True, 2)
+s_data = SD(True, 5)
 addTest()
 clear()
 containsTest()
