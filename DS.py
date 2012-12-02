@@ -5,5 +5,5 @@ class DS:
     MIN_HEAP = 3
     MAX_HEAP = 4
     HASHTABLE = 5
-    NUM_STRUCTURES = 6
+    NUM_STRUCTURES = 5
 
