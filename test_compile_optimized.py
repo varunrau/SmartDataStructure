@@ -1,28 +1,69 @@
 # Test File
 
-from main import *
+from SmartDataStructure import *
 import itertools
-from random import *
+import random
 from sarr import *
 from minheap import *
 from maxheap import *
 from bst import *
 
-def test():
+def clear():
     s_data.len = 0
 
-    for c in range(10000):
-        for x in choice([x for x in itertools.permutations(range(5))]):
-            s_data.add(x)
+def addTest():
+    s_data.len = 0
 
-    print "size = " + str(s_data.len)
+    for x in range(10000):
+        y = random.randint(0, 1000000)
+        s_data.add(y)
 
-    print(str(s_data.contains(3)) + " should be true")
+    if s_data.len != 10000:
+        print "Add FAILED"
+    else:
+        print "Add PASSED"
 
-    s_data.remove(3)
-    print(str(s_data.contains(3)) + " should be false")
+def containsTest():
+    test = []
+    for x in range(1000):
+        y = random.randint(0, 1000000)
+        s_data.add(y)
+        test.append(y)
 
-    print(str(s_data.get(0)) + " should be 0")
+    def cont(arr, key):
+        toReturn = False
+        for x in arr:
+            if x == key:
+                return True
+        return False
 
-s_data = SD(True, 3)
-test()
+
+    for x in range(s_data.len):
+        if not s_data.contains(x) and cont(test, x):
+            print "Contains FAILED"
+    print "Contains PASSED"
+
+def removeTest():
+    test = []
+    for x in range(1000):
+        y = random.randint(0, 1000000)
+        test.append(y)
+        s_data.add(y)
+
+
+    for x in range(1000):
+        s_data.remove(test[x])
+
+    if s_data.len:
+        print "Remove FAILED"
+    else:
+        print "Remove PASSED"
+
+s_data = SD(True, 2)
+addTest()
+clear()
+containsTest()
+clear()
+removeTest()
+clear()
+
