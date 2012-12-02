@@ -10,7 +10,7 @@ from minheap import *
 from maxheap import *
 from hashtable import *
 import math
-from globalz import *
+import globalz
 
 TIME_TO_REEVAL = 1
 
@@ -138,7 +138,7 @@ class SD:
         else:
             new = self.best_datastructure()
             #if new != self.which:
-            self.use_new_datastructure(0)
+            #self.use_new_datastructure(0)
             #self.use_new_datastructure(5)
 
     def use_new_datastructure(self, new):
