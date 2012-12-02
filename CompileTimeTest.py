@@ -1,6 +1,6 @@
 #Compile Time Test
 #from time import clock, time
-import time, fileinput, string, sys
+import time, fileinput, string, sys, operator, os
 from DS import *
 
 #dataStructures = ["Arr()", "SArr()"]
@@ -13,13 +13,13 @@ testFile = testFileName + ".py"
 minTime = sys.maxint
 
 for i in range(len(dataStructures)): #loop through dataStructures
-  newFileName = str(testFileName + "_" + str(dataStructures[i]) + ".py")
+  newFileName = str(testFileName + "_T" + str(dataStructures[i]) + ".py")
   file = open(newFileName, "w")
 
   for line in fileinput.input(testFile): #replace SD() with a d.s.
     line = line.replace("SD()", "SD(True, " + str(dataStructures[i]) + ")")
     file.write(line)
-
+  
   file.close()
 
   start_time = time.time()
@@ -27,8 +27,30 @@ for i in range(len(dataStructures)): #loop through dataStructures
   elapsedTime = time.time() - start_time
   dataStructureTimes.append(elapsedTime)
 
-for i in range(len(dataStructures)):
+for i in range(len(dataStructures)): #print times
   print ("Time using %s: %s" % (dataStructures[i], dataStructureTimes[i]))
+
+minIndex, minValue = min(enumerate(dataStructureTimes), key=operator.itemgetter(1))
+
+print "Fastest is %d" % (minIndex)
+
+#rename fastest .py to *_optimized.py
+fastestFileName = str(testFileName + "_T" + str(minIndex) + ".py")
+os.rename(fastestFileName, testFileName + "_optimized.py")
+
+for filename in os.listdir("."):
+  if filename.startswith(testFileName + "_T"):
+    os.remove(filename)
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -11,11 +11,8 @@ from bst import *
 def test():
     s_data.len = 0
 
-    for c in range(10000):
-        for x in choice([x for x in itertools.permutations(range(5))]):
-            s_data.add(x)
-
-    print "size = " + str(s_data.len)
+    for x in choice([x for x in itertools.permutations(range(10))]):
+        s_data.add(x)
 
     print(str(s_data.contains(3)) + " should be true")
 
@@ -24,5 +21,5 @@ def test():
 
     print(str(s_data.get(0)) + " should be 0")
 
-s_data = SD(True, 0)
+s_data = SD(True, 3)
 test()
