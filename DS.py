@@ -1,7 +1,7 @@
 class DS:
-    ARR = 0
-    SARR = 1
-    BST = 2
-    MinHeap = 3
-    MaxHeap = 4
-    HashTable = 5
+    ARRAY = 0
+    SORTED_ARRAY = 1
+    BINARY_SEARCH_TREE = 2
+    MIN_HEAP = 3
+    MAX_HEAP = 4
+    HASHTABLE = 5
