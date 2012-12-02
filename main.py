@@ -30,16 +30,22 @@ class SD:
     def get(self, index):
         return self.struct.get(index)
 
+    def get_min(self):
+        return self.get(self, 0)
+
+    def get_max(self):
+        return self.get(self, len - 1)
+
     def extract(self, index):
         toReturn = get(self, index)
         remove(self, index)
         return toReturn
 
     def extract_min(self):
-        extract(get(0))
+        extract(self, 0)
 
     def extract_max(self):
-        extract(get(self.len - 1))
+        extract(self, self.len - 1)
 
     def size(self):
         return self.len
