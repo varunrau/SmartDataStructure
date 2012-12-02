@@ -12,7 +12,7 @@ from hashtable import *
 import math
 import globalz
 
-TIME_TO_REEVAL = 1
+TIME_TO_REEVAL = 10000
 
 class SD:
 
@@ -158,14 +158,9 @@ class SD:
         else:
             temp = Arr()
         for x in range(self.size()):
-            print x
-            if globalz.which == DS.MAX_HEAP:
-                item = self.extract_min_new()
-                temp.add(item)
-            else:
-                item = self.get(x)
-                self.remove_new(item)
-                temp.add(item)
+            item = self.get(x)
+            self.remove_new(item)
+            temp.add(item)
         globalz.which = new
         self.struct = temp
         self.isTesting = False
