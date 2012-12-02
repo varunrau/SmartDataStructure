@@ -2,6 +2,7 @@
 
 import bisect
 
+from DS import *
 from arr import *
 from sarr import *
 
@@ -12,8 +13,9 @@ class SD:
     which data structure to use. The higher the weight the better this
     data structure.
     """
-    def __init__(self):
-        self.struct = SArr()
+    def __init__(self, which, isTesting):
+        self.struct = Arr()
+        
         self.len = 0
 
     def contains(self, key):

@@ -6,7 +6,7 @@ from random import *
 from sarr import *
 from minheap import *
 from maxheap import *
-
+from bst import *
 
 def test():
     s_data.len = 0
@@ -41,7 +41,7 @@ s_data.struct = SArr()
 test()
 
 # --------------
-# Heap Test
+# Max Heap Test
 # --------------
 
 
@@ -51,7 +51,7 @@ s_data.struct = MinHeap()
 test()
 
 # --------------
-# Heap Test
+# Min Heap Test
 # --------------
 
 
@@ -59,3 +59,13 @@ print "Testing Min Heap\n"
 
 s_data.struct = MaxHeap()
 test()
+# --------------
+# Balanced BST Test 
+# --------------
+
+
+print "Testing Balanced BST\n"
+
+s_data.struct = Balanced_BST()
+test()
+
