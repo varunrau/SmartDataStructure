@@ -27,6 +27,7 @@ class Arr:
     Removes the item from the array.
     """
     def remove(self, key):
+        print "remove called"
         self.array.remove(key)
 
     """

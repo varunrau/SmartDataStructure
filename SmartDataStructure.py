@@ -10,8 +10,9 @@ from minheap import *
 from maxheap import *
 from hashtable import *
 import math
+import globalz
 
-TIME_TO_REEVAL = 100
+TIME_TO_REEVAL = 1
 
 class SD:
 
@@ -35,16 +36,14 @@ class SD:
             self.struct = Hashtable()
         else:
             self.struct = Arr()
-
         self.which = which
-        self.contains_ctr = 0
-        self.add_ctr = 0
-        self.remove_ctr = 0
-        self.get_ctr = 0
+        globalz.contains_ctr = 0
+        globalz.add_ctr = 0
+        globalz.remove_ctr = 0
+        globalz.get_ctr = 0
         self.get_min_ctr = 0
-        self.extract_ctr = 0
         self.extract_min_ctr = 0
-        self.num_ops = 0
+        globalz.num_ops = 0
 
         self.is_peak = True
 
@@ -52,8 +51,8 @@ class SD:
         self.len = 0
 
     def contains(self, key):
-        self.contains_ctr += 1
-        self.num_ops += 1
+        globalz.contains_ctr += 1
+        globalz.num_ops += 1
         self.time_to_reeval()
         return self.struct.contains(key)
 
@@ -63,8 +62,8 @@ class SD:
     def add(self, key):
         self.struct.add(key)
         self.len += 1
-        self.add_ctr += 1
-        self.num_ops += 1
+        globalz.add_ctr += 1
+        globalz.num_ops += 1
         self.time_to_reeval()
 
     def add_new(self, key):
@@ -74,45 +73,48 @@ class SD:
     def remove(self, key):
         self.struct.remove(key)
         self.len -= 1
-        self.num_ops += 1
-        self.remove_ctr += 1
+        globalz.num_ops += 1
+        globalz.remove_ctr += 1
         self.time_to_reeval()
 
     def get(self, index):
-        self.get_ctr += 1
-        self.num_ops += 1
+        globalz.get_ctr += 1
+        globalz.num_ops += 1
         self.time_to_reeval()
         return self.struct.get(index)
 
     def get_min(self):
         self.get_min_ctr += 1
-        self.num_ops += 1
+        globalz.num_ops += 1
         self.time_to_reeval()
         return self.get(self, 0)
 
     def get_max(self):
         self.get_max_ctr += 1
-        self.num_ops += 1
+        globalz.num_ops += 1
         self.time_to_reeval()
         return self.get(self, len - 1)
 
     def extract(self, index):
         toReturn = self.get(index)
-        self.remove(toReturn)
-        self.extract_ctr += 1
-        self.num_ops += 1
+        self.remove_new(toReturn)
+        globalz.num_ops += 1
         self.time_to_reeval()
         return toReturn
+
+    def remove_new(self, key):
+        print self.struct
+        self.struct.remove(key)
 
     def extract_min(self):
         self.extract(0)
         self.extract_min_ctr += 1
-        self.num_ops += 1
+        globalz.num_ops += 1
         self.time_to_reeval()
 
     def extract_new(self, index):
         toReturn = self.get_new(index)
-        self.remove(toReturn)
+        self.remove_new(toReturn)
         return toReturn
 
     def get_new(self, index):
@@ -124,7 +126,7 @@ class SD:
     def extract_max(self):
         self.extract(self.len - 1)
         self.extract_max_ctr += 1
-        self.num_ops += 1
+        globalz.num_ops += 1
         self.time_to_reeval()
 
     def size(self):
@@ -135,15 +137,12 @@ class SD:
             return
         else:
             new = self.best_datastructure()
-            if new is None:
-                return
-            if new != self.which and not self.is_peak and new is not None and self.which is not None:
-                if new != None:
-                    self.use_new_datastructure(new)
+            #if new != self.which:
+            self.use_new_datastructure(0)
+            #self.use_new_datastructure(5)
 
     def use_new_datastructure(self, new):
         self.isTesting = True
-        self.which = new
         if new == DS.ARRAY:
             temp = Arr()
         elif new == DS.SORTED_ARRAY:
@@ -158,13 +157,15 @@ class SD:
             temp = Hashtable()
         else:
             temp = Arr()
+        print "size: " + str(self.size())
         for x in range(self.size()):
             if self.which == DS.MAX_HEAP:
                 item = self.extract_max_new()
-                temp.add_new(item)
-            else:
-                item = self.extract_min()
                 temp.add(item)
+            else:
+                item = self.extract_min_new()
+                temp.add(item)
+        self.which = new
         self.struct = temp
         self.isTesting = False
 
@@ -173,12 +174,12 @@ class SD:
         if not s:
             return self.which
         log = math.log(s)
-        arr = self.add_ctr + s * self.contains_ctr + s * self.remove_ctr + s * self.get_ctr
-        sarr = log * self.contains_ctr + s * self.add_ctr + self.remove_ctr * s + s
-        bst = log * self.contains_ctr + log * self.add_ctr + self.remove_ctr * log + self.get_ctr * log
-        htable = 3 * s + s * self.get_ctr
-        minheap = self.contains_ctr * s + log * self.add_ctr + log * self.remove_ctr + log * self.get_ctr
-        maxheap = self.contains_ctr * s + log * self.add_ctr + log * self.remove_ctr + log * self.get_ctr
+        arr = globalz.add_ctr + s * globalz.contains_ctr + s * globalz.remove_ctr + s * globalz.get_ctr
+        sarr = log * globalz.contains_ctr + s * globalz.add_ctr + globalz.remove_ctr * s + s
+        bst = log * globalz.contains_ctr + log * globalz.add_ctr + globalz.remove_ctr * log + globalz.get_ctr * log
+        htable = 3 * s + s * globalz.get_ctr
+        minheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * globalz.get_ctr
+        maxheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * globalz.get_ctr
         array = [arr, sarr, bst, minheap, maxheap, htable]
         mini = min(array)
         counter = 0
@@ -188,11 +189,13 @@ class SD:
                 if mini == val:
                     smallest = counter
                 counter += 1
-            print smallest
             return smallest
         return self.which
 
     def time_to_reeval(self):
-        if self.num_ops >= TIME_TO_REEVAL:
+        if globalz.num_ops >= TIME_TO_REEVAL:
             self.reeval()
 
+
+    def counters():
+        return [contains_ctr, add_ctr, remove_ctr, get_ctr]
