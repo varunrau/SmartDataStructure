@@ -138,9 +138,8 @@ class SD:
         else:
             new = self.best_datastructure()
             print "best ds: " + str(new)
-            #if new != globalz.which:
-            self.use_new_datastructure(0)
-            #self.use_new_datastructure(5)
+            if globalz.which != new:
+                self.use_new_datastructure(new)
 
     def use_new_datastructure(self, new):
         self.isTesting = True
