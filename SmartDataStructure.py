@@ -10,7 +10,7 @@ from minheap import *
 from maxheap import *
 from hashtable import *
 import math
-import globalz
+from globalz import *
 
 TIME_TO_REEVAL = 1
 
