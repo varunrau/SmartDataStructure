@@ -158,7 +158,7 @@ class SD:
         else:
             temp = Arr()
         for x in range(self.size()):
-            item = self.get(x)
+            item = self.get(0)
             self.remove_new(item)
             temp.add(item)
         globalz.which = new
