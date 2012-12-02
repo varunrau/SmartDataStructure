@@ -174,8 +174,8 @@ class SD:
         sarr = log * globalz.contains_ctr + s * globalz.add_ctr + globalz.remove_ctr * s + globalz.get_ctr
         bst = log * globalz.contains_ctr + log * globalz.add_ctr + globalz.remove_ctr * log + globalz.get_ctr * log
         #htable = 3 * s + s * globalz.get_ctr
-        minheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * globalz.get_ctr
-        maxheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * globalz.get_ctr
+        minheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * (globalz.get_ctr - globalz.get_min_ctr)
+        maxheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * (globalz.get_ctr - globalz.get_max_ctr)
         array = [arr, sarr, bst, minheap, maxheap]#, htable]
         mini = min(array)
         counter = 0
