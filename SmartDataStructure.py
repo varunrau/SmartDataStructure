@@ -171,7 +171,7 @@ class SD:
             return globalz.which
         log = math.log(s)
         arr = globalz.add_ctr + s * globalz.contains_ctr + s * globalz.remove_ctr + s * globalz.get_ctr
-        sarr = log * globalz.contains_ctr + s * globalz.add_ctr + globalz.remove_ctr * s + s
+        sarr = log * globalz.contains_ctr + s * globalz.add_ctr + globalz.remove_ctr * s + globalz.get_ctr
         bst = log * globalz.contains_ctr + log * globalz.add_ctr + globalz.remove_ctr * log + globalz.get_ctr * log
         #htable = 3 * s + s * globalz.get_ctr
         minheap = globalz.contains_ctr * s + log * globalz.add_ctr + log * globalz.remove_ctr + log * globalz.get_ctr
