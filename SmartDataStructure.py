@@ -164,7 +164,8 @@ class SD:
                 item = self.extract_max_new()
                 temp.add(item)
             else:
-                item = self.extract_min_new()
+                item = self.get(x)
+                self.remove(item)
                 temp.add(item)
         globalz.which = new
         self.struct = temp
