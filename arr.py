@@ -33,7 +33,8 @@ class Arr:
     Returns the item at index index
     """
     def get(self, index):
-        return self.sort().index(index)
+        self.array.sort()
+        return self.array[index]
 
     def sort(self):
         l = []

@@ -9,6 +9,7 @@ from bst import *
 from minheap import *
 from maxheap import *
 from hashtable import *
+import math
 
 TIME_TO_REEVAL = 100
 
@@ -56,6 +57,9 @@ class SD:
         self.time_to_reeval()
         return self.struct.contains(key)
 
+    def setPeak(self, peak):
+        self.is_peak = peak
+
     def add(self, key):
         self.struct.add(key)
         self.len += 1
@@ -90,7 +94,7 @@ class SD:
 
     def extract(self, index):
         toReturn = self.get(index)
-        self.remove(index)
+        self.remove(toReturn)
         self.extract_ctr += 1
         self.num_ops += 1
         self.time_to_reeval()
@@ -116,10 +120,11 @@ class SD:
             return
         else:
             new_data_structure = self.best_datastructure()
-            if new_data_structure != self.which:
+            if new_data_structure != self.which and not self.is_peak and self.which:
                 self.use_new_datastructure(new_data_structure)
 
     def use_new_datastructure(self, new):
+        self.isTesting = True
         if new == DS.ARRAY:
             temp = Arr()
         elif new == DS.SORTED_ARRAY:
@@ -135,27 +140,33 @@ class SD:
         else:
             temp = Arr()
         for x in range(self.size()):
-            if which == DS.MAX_HEAP:
+            if self.which == DS.MAX_HEAP:
                 item = self.extract_max()
                 temp.add(item)
             else:
-                item = self.extract(x)
+                item = self.extract_min()
                 temp.add(item)
         self.struct = temp
+        self.which = new
+        self.isTesting = False
+        print "Switch DataStructures"
 
     def best_datastructure(self):
         s = self.size()
-        log = math.log(s, 2)
-        arr = add_ctr + s * contains_ctr + s * remove_ctr + s * get_ctr
-        sarr = log * contains_ctr + s * add_ctr + remove_ctr * s + s
-        bst = log * contains_ctr + log * add_ctr + remove_ctr * log + get_ctr * log
-        htable = 3 * s + s * get_ctr
-        heap = contains_ctr * s + log * add_ctr + log * remove_ctr + log * get_ctr
-        array = [arr, sarr, bst, htable, heap]
+        if not s:
+            return
+        log = math.log(s)
+        arr = self.add_ctr + s * self.contains_ctr + s * self.remove_ctr + s * self.get_ctr
+        sarr = log * self.contains_ctr + s * self.add_ctr + self.remove_ctr * s + s
+        bst = log * self.contains_ctr + log * self.add_ctr + self.remove_ctr * log + self.get_ctr * log
+        htable = 3 * s + s * self.get_ctr
+        minheap = self.contains_ctr * s + log * self.add_ctr + log * self.remove_ctr + log * self.get_ctr
+        maxheap = self.contains_ctr * s + log * self.add_ctr + log * self.remove_ctr + log * self.get_ctr
+        array = [arr, sarr, bst, minheap, maxheap, htable]
         mini = min(array)
         counter = 0
         smallest = array[0]
-        if mini < val * .75:
+        if mini < array[self.which] * 1:
             for val in array:
                 if mini == val:
                     smallest = counter
