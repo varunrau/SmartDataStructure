@@ -21,5 +21,5 @@ def test():
 
     print(str(s_data.get(0)) + " should be 0")
 
-s_data = SD(2, True)
+s_data = SD(True, 2)
 test()
