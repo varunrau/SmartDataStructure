@@ -5,6 +5,9 @@ import bisect
 from DS import *
 from arr import *
 from sarr import *
+from bst import *
+from minheap import *
+from maxheap import *
 
 class SD:
 
