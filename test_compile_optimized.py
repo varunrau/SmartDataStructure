@@ -14,11 +14,11 @@ def clear():
 def addTest():
     s_data.len = 0
 
-    for x in range(10):
+    for x in range(100000):
         y = random.randint(0, 1000000)
         s_data.add(y)
 
-    if s_data.len != 10:
+    if s_data.len != 100000:
         print "Add FAILED"
     else:
         print "Add PASSED"
@@ -62,10 +62,10 @@ s_data = SD(False, 0)
 s_data.setPeak(False)
 
 addTest()
-#clear()
-#containsTest()
-#clear()
-#removeTest()
-#clear()
+clear()
+containsTest()
+clear()
+removeTest()
+clear()
 
 

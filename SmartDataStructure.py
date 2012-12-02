@@ -133,9 +133,9 @@ class SD:
             return
         else:
             new = self.best_datastructure()
-            #if new != self.which and not self.is_peak and new is not None and self.which is not None:
-                #self.use_new_datastructure(new)
-            self.use_new_datastructure(5)
+            if new != self.which:
+                self.use_new_datastructure(5)
+            #self.use_new_datastructure(5)
 
     def use_new_datastructure(self, new):
         self.isTesting = True
@@ -185,7 +185,6 @@ class SD:
                 if mini == val:
                     smallest = counter
                 counter += 1
-            print smallest
             return smallest
         return self.which
 
