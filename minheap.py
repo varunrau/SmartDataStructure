@@ -46,7 +46,7 @@ class MinHeap:
         stack = []
         for x in range(index):
             stack.append(heapq.heappop(self.array))
-        toReturn = stack.pop()
+        toReturn = heapq.heappop(self.array)
         for x in stack:
             self.add(x)
         return toReturn
