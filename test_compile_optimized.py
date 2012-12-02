@@ -15,7 +15,7 @@ def addTest():
 
     for x in range(100):
         y = random.randint(0, 1000000)
-        s_data.add(str(y))
+        s_data.add(y)
 
     if s_data.len != 100:
         print "Add FAILED"
@@ -28,15 +28,12 @@ def containsTest():
         y = random.randint(0, 1000000)
         s_data.add(y)
         test.append(y)
-
     def cont(arr, key):
         toReturn = False
         for x in arr:
             if x == key:
                 return True
         return False
-
-
     for x in range(s_data.len):
         if not s_data.contains(x) and cont(test, x):
             print "Contains FAILED"
@@ -57,11 +54,12 @@ def removeTest():
     else:
         print "Remove PASSED"
 
-s_data = SD(True, 4)
+s_data = SD(True, 0)
 s_data.setPeak(False)
 s_data.add(3)
 s_data.add(4)
-#addTest()
+addTest()
+containsTest()
 #clear()
 #containsTest()
 #clear()
