@@ -43,6 +43,7 @@ class Hashtable:
     def get(self, index):
         full_list = []
         for bucket in self.buckets:
-            full_list.append(bucket)
+            if bucket is not None:
+                full_list.append(bucket)
 
         return full_list.sort()[full_list.sort() is not None].index(index)
