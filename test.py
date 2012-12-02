@@ -11,7 +11,7 @@ from bst import *
 def test():
     s_data.len = 0
 
-    for x in choice([x for x in itertools.permutations(range(10))]):
+    for x in choice([x for x in itertools.permutations(range(100))]):
         s_data.add(x)
 
     print(str(s_data.contains(3)) + " should be true")
