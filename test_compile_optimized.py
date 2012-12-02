@@ -16,7 +16,7 @@ def addTest():
 
     for x in range(100):
         y = random.randint(0, 1000000)
-        s_data.add(y)
+        s_data.add(str(y))
 
     if s_data.len != 100:
         print "Add FAILED"
@@ -60,9 +60,9 @@ def removeTest():
 
 s_data = SD(False, 0)
 s_data.setPeak(False)
-s_data.add(5)
-s_data.remove(5)
+s_data.add(3)
 s_data.add(4)
+addTest()
 #addTest()
 #clear()
 #containsTest()
