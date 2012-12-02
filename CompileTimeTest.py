@@ -34,10 +34,17 @@ minIndex, minValue = min(enumerate(dataStructureTimes), key=operator.itemgetter(
 
 print "Fastest is %d" % (minIndex)
 
-#rename fastest .py to *_optimized.py
+#create *_optimized.py with SD set to False
+file = open(testFileName + "_optimized.py", "w")
 fastestFileName = str(testFileName + "_T" + str(minIndex) + ".py")
-os.rename(fastestFileName, testFileName + "_optimized.py")
 
+for line in fileinput.input(fastestFileName):
+  line = line.replace("SD(TRUE", "SD(FALSE")
+  file.write(line)
+
+file.close()
+
+#remove temp testing files
 for filename in os.listdir("."):
   if filename.startswith(testFileName + "_T"):
     os.remove(filename)
