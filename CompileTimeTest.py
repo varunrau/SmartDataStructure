@@ -39,7 +39,7 @@ file = open(testFileName + "_optimized.py", "w")
 fastestFileName = str(testFileName + "_T" + str(minIndex) + ".py")
 
 for line in fileinput.input(fastestFileName):
-  line = line.replace("SD(TRUE", "SD(FALSE")
+  line = line.replace("SD(True", "SD(False")
   file.write(line)
 
 file.close()
