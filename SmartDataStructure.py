@@ -88,13 +88,13 @@ class SD:
         self.get_min_ctr += 1
         globalz.num_ops += 1
         self.time_to_reeval()
-        return self.get(self, 0)
+        return self.get(0)
 
     def get_max(self):
         self.get_max_ctr += 1
         globalz.num_ops += 1
         self.time_to_reeval()
-        return self.get(self, len - 1)
+        return self.get(len - 1)
 
     def extract(self, index):
         toReturn = self.get(index)
