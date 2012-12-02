@@ -13,9 +13,30 @@ class SD:
     which data structure to use. The higher the weight the better this
     data structure.
     """
-    def __init__(self, which, isTesting):
-        self.struct = Arr()
-        
+    def __init__(self, isTesting, which = None):
+
+        if which == DS.ARRAY:
+            self.struct = Arr()
+        elif which == DS.SORTED_ARRAY:
+            self.struct = SArr()
+        elif which == DS.MAX_HEAP:
+            self.struct = MaxHeap()
+        elif which == DS.MIN_HEAP:
+            self.struct = MinHeap()
+        elif which == DS.BINARY_SEARCH_TREE:
+            self.struct = Balanced_BST()
+        else:
+            print "Default to Array"
+            self.struct = Arr()
+
+        self.contains_ctr = 0
+        self.add_ctr = 0
+        self.remove_ctr = 0
+        self.get_ctr = 0
+        self.get_min_ctr = 0
+        self.extract_ctr = 0
+        self.extract_min_ctr = 0
+
         self.len = 0
 
     def contains(self, key):

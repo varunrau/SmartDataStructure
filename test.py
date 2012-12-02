@@ -21,7 +21,7 @@ def test():
 
     print(str(s_data.get(0)) + " should be 0")
 
-s_data = SD()
+s_data = SD(True)
 
 # --------------
 # Array Test
