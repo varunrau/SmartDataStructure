@@ -50,7 +50,6 @@ def removeTest():
         test.append(y)
         s_data.add(y)
 
-
     for x in range(1000):
         s_data.remove(test[x])
 

@@ -67,10 +67,6 @@ class SD:
         self.num_ops += 1
         self.time_to_reeval()
 
-    def add_new(self, key):
-        self.struct.add(key)
-        self.len += 1
-
     def remove(self, key):
         self.struct.remove(key)
         self.len -= 1
@@ -110,17 +106,6 @@ class SD:
         self.num_ops += 1
         self.time_to_reeval()
 
-    def extract_new(self, index):
-        toReturn = self.get_new(index)
-        self.remove(toReturn)
-        return toReturn
-
-    def get_new(self, index):
-        return self.struct.get(index)
-
-    def extract_min_new(self):
-        self.extract_new(0)
-
     def extract_max(self):
         self.extract(self.len - 1)
         self.extract_max_ctr += 1
@@ -138,8 +123,7 @@ class SD:
             if new is None:
                 return
             if new != self.which and not self.is_peak and new is not None and self.which is not None:
-                if new != None:
-                    self.use_new_datastructure(new)
+                self.use_new_datastructure(new)
 
     def use_new_datastructure(self, new):
         self.isTesting = True
@@ -160,8 +144,8 @@ class SD:
             temp = Arr()
         for x in range(self.size()):
             if self.which == DS.MAX_HEAP:
-                item = self.extract_max_new()
-                temp.add_new(item)
+                item = self.extract_max()
+                temp.add(item)
             else:
                 item = self.extract_min()
                 temp.add(item)
