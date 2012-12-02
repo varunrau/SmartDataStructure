@@ -46,4 +46,4 @@ class Hashtable:
             if bucket is not None:
                 full_list.append(bucket)
 
-        return full_list.sort()[full_list.sort() is not None].index(index)
+        return full_list.sort().index(index)
