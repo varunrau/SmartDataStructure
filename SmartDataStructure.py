@@ -12,7 +12,7 @@ from hashtable import *
 import math
 import globalz
 
-TIME_TO_REEVAL = 1
+TIME_TO_REEVAL = 10
 
 class SD:
 
@@ -36,7 +36,7 @@ class SD:
             self.struct = Hashtable()
         else:
             self.struct = Arr()
-        self.which = which
+        globalz.which = which
         globalz.contains_ctr = 0
         globalz.add_ctr = 0
         globalz.remove_ctr = 0
@@ -103,7 +103,6 @@ class SD:
         return toReturn
 
     def remove_new(self, key):
-        print self.struct
         self.struct.remove(key)
 
     def extract_min(self):
@@ -114,6 +113,7 @@ class SD:
 
     def extract_new(self, index):
         toReturn = self.get_new(index)
+        print str(toReturn) + " to return"
         self.remove_new(toReturn)
         return toReturn
 
@@ -137,8 +137,9 @@ class SD:
             return
         else:
             new = self.best_datastructure()
-            #if new != self.which:
-            #self.use_new_datastructure(0)
+            print "best ds: " + str(new)
+            #if new != globalz.which:
+            self.use_new_datastructure(0)
             #self.use_new_datastructure(5)
 
     def use_new_datastructure(self, new):
@@ -157,22 +158,22 @@ class SD:
             temp = Hashtable()
         else:
             temp = Arr()
-        print "size: " + str(self.size())
         for x in range(self.size()):
-            if self.which == DS.MAX_HEAP:
+            print x
+            if globalz.which == DS.MAX_HEAP:
                 item = self.extract_max_new()
                 temp.add(item)
             else:
                 item = self.extract_min_new()
                 temp.add(item)
-        self.which = new
+        globalz.which = new
         self.struct = temp
         self.isTesting = False
 
     def best_datastructure(self):
         s = self.size()
         if not s:
-            return self.which
+            return globalz.which
         log = math.log(s)
         arr = globalz.add_ctr + s * globalz.contains_ctr + s * globalz.remove_ctr + s * globalz.get_ctr
         sarr = log * globalz.contains_ctr + s * globalz.add_ctr + globalz.remove_ctr * s + s
@@ -184,13 +185,13 @@ class SD:
         mini = min(array)
         counter = 0
         smallest = 0
-        if mini < array[self.which] * .75:
+        if mini < array[globalz.which] * .75:
             for val in array:
                 if mini == val:
                     smallest = counter
                 counter += 1
             return smallest
-        return self.which
+        return globalz.which
 
     def time_to_reeval(self):
         if globalz.num_ops >= TIME_TO_REEVAL:
