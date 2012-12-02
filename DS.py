@@ -6,4 +6,6 @@ class DS:
     MAX_HEAP = 4
     HASHTABLE = 5
     NUM_STRUCTURES = 6
+    
+    STRINGS = ["Array", "Sorted Array", "Binary Search Tree", "Min Heap", "Max Heap", "Hash Table"]
 

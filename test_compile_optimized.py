@@ -1,12 +1,14 @@
 # Test File
 
 from SmartDataStructure import *
-import itertools
-import random
+import itertools, random, threading, LiveGraph
 from sarr import *
 from minheap import *
 from maxheap import *
 from bst import *
+
+graphThread = LiveGraph.LiveGraph()
+graphThread.start()
 
 def clear():
     s_data.len = 0
@@ -58,11 +60,9 @@ def removeTest():
     else:
         print "Remove PASSED"
 
-s_data = SD(False, 0)
+s_data = SD(True, 4)
 s_data.setPeak(False)
-s_data.add(5)
-s_data.remove(5)
-s_data.add(4)
+addTest()
 #addTest()
 #clear()
 #containsTest()
