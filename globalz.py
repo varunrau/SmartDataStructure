@@ -1,5 +1,4 @@
 num_ops = 0
-switch_ds_toggle = 0
 which = 0
 
 contains_ctr = 0
