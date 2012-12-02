@@ -17,7 +17,8 @@ for i in range(len(dataStructures)): #loop through dataStructures
   file = open(newFileName, "w")
 
   for line in fileinput.input(testFile): #replace SD() with a d.s.
-    line = line.replace("SD()", "SD(" + str(dataStructures[i]) + ", True)")
+    #line = line.replace("SD()", "SD(" + str(dataStructures[i]) + ", True)")
+    line = line.replace("SD()", "SD(True, " + str(dataStructures[i]) + ")")
     file.write(line)
   
   file.close()
