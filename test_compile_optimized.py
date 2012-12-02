@@ -63,6 +63,10 @@ def removeTest():
 s_data = SD(True, 4)
 s_data.setPeak(False)
 addTest()
+removeTest();
+removeTest();
+removeTest();
+removeTest();
 #addTest()
 #clear()
 #containsTest()
