@@ -139,7 +139,6 @@ class SD:
 
     def use_new_datastructure(self, new):
         self.isTesting = True
-        self.which = new
         if new == DS.ARRAY:
             temp = Arr()
         elif new == DS.SORTED_ARRAY:
@@ -161,6 +160,7 @@ class SD:
             else:
                 item = self.extract_min()
                 temp.add(item)
+        self.which = new
         self.struct = temp
         self.isTesting = False
         print "done"
