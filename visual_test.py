@@ -87,17 +87,19 @@ startBias = 50
 bias = startBias
 
 for i in range(10):
+  addAlot()
   time.sleep(0.1)
 
 for i in range(15):
   x = random.randint(0 + bias, 60 + bias)
+  time.sleep(0.1)
   if x < 20:
     addAlot()
   elif x < 120:
     containsRemAlot()
   elif x < 150:
     containsAddRem()
-  else:git
+  else:
     time.sleep(0.01)
     bias += 10
     if bias > 200:
