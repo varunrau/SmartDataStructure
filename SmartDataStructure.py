@@ -19,24 +19,17 @@ class SD:
     data structure.
     """
     def __init__(self, isTesting, which = None):
-        print(which)
         if which == DS.ARRAY:
-            print "Array"
             self.struct = Arr()
         elif which == DS.SORTED_ARRAY:
-            print "S Array"
             self.struct = SArr()
         elif which == DS.MAX_HEAP:
-            print "M Heap"
             self.struct = MaxHeap()
         elif which == DS.MIN_HEAP:
-            print "min heap"
             self.struct = MinHeap()
         elif which == DS.BINARY_SEARCH_TREE:
-            print "bst"
             self.struct = Balanced_BST()
         else:
-            print "Default to Array"
             self.struct = Arr()
 
         self.which = which
@@ -93,21 +86,21 @@ class SD:
         return self.get(self, len - 1)
 
     def extract(self, index):
-        toReturn = get(self, index)
-        remove(self, index)
+        toReturn = self.get(index)
+        self.remove(index)
         self.extract_ctr += 1
         self.num_ops += 1
         self.time_to_reeval()
         return toReturn
 
     def extract_min(self):
-        extract(self, 0)
+        self.extract(0)
         self.extract_min_ctr += 1
         self.num_ops += 1
         self.time_to_reeval()
 
     def extract_max(self):
-        extract(self, self.len - 1)
+        self.extract(self.len - 1)
         self.extract_max_ctr += 1
         self.num_ops += 1
         self.time_to_reeval()
@@ -145,7 +138,7 @@ class SD:
                 temp.add(item)
         self.struct = temp
 
-    def best_datastructure(self)
+    def best_datastructure(self):
         s = self.size()
         log = math.log(s, 2)
         arr = add_ctr + s * contains_ctr + s * remove_ctr + s * get_ctr
