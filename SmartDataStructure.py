@@ -12,7 +12,7 @@ from hashtable import *
 import math
 import globalz
 
-TIME_TO_REEVAL = 100000
+TIME_TO_REEVAL = 20000
 
 class SD:
 
