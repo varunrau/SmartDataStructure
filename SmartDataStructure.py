@@ -139,7 +139,7 @@ class SD:
             new = self.best_datastructure()
             print "best ds: " + str(new)
             if globalz.which != new:
-                self.use_new_datastructure(new)
+                self.use_new_datastructure(newjj)
 
     def use_new_datastructure(self, new):
         self.isTesting = True
@@ -160,11 +160,11 @@ class SD:
         for x in range(self.size()):
             print x
             if globalz.which == DS.MAX_HEAP:
-                item = self.extract_max_new()
+                item = self.extract_min_new()
                 temp.add(item)
             else:
                 item = self.get(x)
-                self.remove(item)
+                self.remove_new(item)
                 temp.add(item)
         globalz.which = new
         self.struct = temp
